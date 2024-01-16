@@ -1,6 +1,9 @@
 # ASE-24
-## Homeworks
+# Homeworks
 CSC 591(021) Group-19
+
+## Steps to run the program
+cd into src directory and run ```python gate.py -f ../data/filename -t stats```
 
 :sparkles: Contributors
 ---
