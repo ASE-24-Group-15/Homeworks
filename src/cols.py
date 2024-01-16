@@ -20,7 +20,7 @@ class COLS:
         self.klass = klass
         self.names = row.cells
     
-    #Update
+    #Update*
     def add(self, row):
         for cols in [self.x, self.y]:
             for _, col in cols.items():
