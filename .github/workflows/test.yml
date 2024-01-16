@@ -1,0 +1,19 @@
+name: Test Workflow
+
+on: push 
+
+jobs:
+  unit-testing:
+    runs-on: ubuntu-latest 
+    
+    steps:
+    - name : Checkout code
+      uses : actions/checkout@v2
+      
+    - name : Install Packages 
+      run : pip install pytest
+      
+    - name: Run tests
+      run: |
+          cd tests
+          pytest test.py
