@@ -7,6 +7,7 @@ sys.path.insert(1, root_dir)
 # from src.num import NUM
 # from src.sym import SYM
 from src.l import l
+import src.tricks as tricks
 
 # def test_Num():
 #     num = NUM()
@@ -57,6 +58,12 @@ class TestGateScript(unittest.TestCase):
     def test_rnd_test(self):
        self.assertEqual(l().rnd(23.324234), 23.32)
        self.assertEqual(l().rnd(23.324234, 3), 23.324)
+       
+    def test_tricks_coerce(self):
+        self.assertEqual(tricks.coerce("5"), 5)
+        self.assertEqual(tricks.coerce(5), 5)
+    
+        
     
         
 
