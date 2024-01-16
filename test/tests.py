@@ -7,6 +7,7 @@ sys.path.insert(1, root_dir)
 # from src.num import NUM
 # from src.sym import SYM
 from src.l import l
+from src.row import ROW
 import src.tricks as tricks
 
 # def test_Num():
@@ -62,6 +63,10 @@ class TestGateScript(unittest.TestCase):
     def test_tricks_coerce(self):
         self.assertEqual(tricks.coerce("5"), 5)
         self.assertEqual(tricks.coerce(5), 5)
+    
+    def test_row_object(self):
+        row_data = ["Mpg", 5, "Po", "Area"]
+        self.assertEqual(ROW(row_data).cells, row_data)
     
         
     
