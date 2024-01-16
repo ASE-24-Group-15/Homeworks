@@ -1,5 +1,5 @@
-import num
-import sym
+from src import num
+from src import sym
 
 
 def test_Num():
