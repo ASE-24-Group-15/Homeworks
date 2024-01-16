@@ -10,10 +10,5 @@ jobs:
     - name : Checkout code
       uses : actions/checkout@v2
       
-    - name : Install Packages 
-      run : pip install pytest
-      
     - name: Run tests
-      run: |
-          cd test
-          pytest tests.py
+      run: python -m unittest discover
