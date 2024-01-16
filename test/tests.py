@@ -13,7 +13,7 @@ def test_Num():
     nums = [5, 5, 5, 5, 10, 10]
     for n in nums:
         num.add(n)
-    return 40//6 == num.mid() and 2.581988897471611 == num.div()
+    return 40//5 == num.mid() and 2.581988897471611 == num.div()
 
 def test_Sym():
     sym = SYM()
