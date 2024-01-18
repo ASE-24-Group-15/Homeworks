@@ -11,6 +11,7 @@ from src.l import l
 from src.row import ROW
 import src.tricks as tricks
 
+
 # def test_Num():
 #     num = NUM()
 #     nums = [5, 5, 5, 5, 10, 10]
@@ -31,7 +32,9 @@ import sys
 import ast
 import unittest
 
+
 class TestGateScript(unittest.TestCase):
+    # Data stats test cases start here
     # Define expected outputs for each CSV file
     expected_outputs = {
         "auto93.csv": '{".N": 398, "Acc+": 15.57, "Lbs-": 2970.42, "Mpg+": 23.84}',
@@ -84,19 +87,19 @@ class TestGateScript(unittest.TestCase):
             file_path = os.path.join(data_dir, csv_file)
             expected_output = self.expected_outputs.get(csv_file, "DefaultExpectedOutput")
             self.run_test_for_file(file_path, expected_output)
-    
+    # data stats test cases end here
+
     def test_rnd_test(self):
        self.assertEqual(l().rnd(23.324234), 23.32)
        self.assertEqual(l().rnd(23.324234, 3), 23.324)
-       
-    def test_tricks_coerce(self):
-        self.assertEqual(tricks.coerce("5"), 5)
-        self.assertEqual(tricks.coerce(5), 5)
     
+    # Row test cases start here
     def test_row_object(self):
         row_data = ["Mpg", 5, "Po", "Area"]
         self.assertEqual(ROW(row_data).cells, row_data)
+    # Row test cases end here
 
+    # Cols test cases start here
     def test_COLSInitialization(self):
         # Test case 1: Check if the class is initialized properly
         row = ["A", "b", "c"]
@@ -145,6 +148,23 @@ class TestGateScript(unittest.TestCase):
         }
         assert cols.klass is None
         assert cols.names == ["A", "b!", "c+", "D", "e!", "f+"]  
+    # Cols test cases end here
+
+    # Tricks test cases start here
+    def test_coerce_with_valid_input(self):
+        result = tricks.coerce("42")
+        self.assertEqual(result, 42)
+
+    def test_coerce_with_invalid_input(self):
+        result = tricks.coerce("invalid")
+        self.assertEqual(result, "invalid")
+
+    @unittest.mock.patch('builtins.open', unittest.mock.mock_open(read_data='1,2,3\n4,5,6\n'))
+    def test_csv_parser(self):
+        result = list(tricks.csv(file="example.csv"))
+        expected_output = [[1, 2, 3], [4, 5, 6]]
+        self.assertEqual(result, expected_output)
+    # Tricks test cases end here
 
 if __name__ == "__main__":
     unittest.main()
