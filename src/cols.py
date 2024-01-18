@@ -1,6 +1,5 @@
 from num import NUM
 from sym import SYM
-import re
 
 class COLS:
     #Create

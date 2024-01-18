@@ -4,8 +4,9 @@ current_dir = os.path.dirname(os.path.realpath(__file__))
 root_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.insert(1, root_dir)
 
-# from src.num import NUM
-# from src.sym import SYM
+from src.num import NUM
+from src.sym import SYM
+from src.cols import COLS
 from src.l import l
 from src.row import ROW
 import src.tricks as tricks
@@ -95,10 +96,55 @@ class TestGateScript(unittest.TestCase):
     def test_row_object(self):
         row_data = ["Mpg", 5, "Po", "Area"]
         self.assertEqual(ROW(row_data).cells, row_data)
-    
-        
-    
-        
+
+    def test_COLSInitialization(self):
+        # Test case 1: Check if the class is initialized properly
+        row = ["A", "b", "c"]
+        cols = COLS(row)
+        assert cols.x == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
+        assert cols.y == {}
+        assert cols.all == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
+        assert cols.klass is None
+        assert cols.names == ["A", "b", "c"]
+
+        # Test case 2: Check if columns with "!+-" are added to self.x only
+        row = ["A", "B!", "C"]
+        cols = COLS(row)
+        assert cols.x == {0: NUM("A", 0), 2: SYM("C", 2)}
+        assert cols.y == {1: SYM("B!", 1)}
+        assert cols.all == {0: NUM("A", 0), 1: SYM("B!", 1), 2: SYM("C", 2)}
+        assert cols.klass is None
+        assert cols.names == ["A", "B!", "C"]
+
+        # Test case 3: Check if names ending with "X" are not taken
+        row = ["A", "b!", "cX"]
+        cols = COLS(row)
+        assert cols.x == {0: NUM("A", 0)}
+        assert cols.y == {1: SYM("b!", 1)}
+        assert cols.all == {0: NUM("A", 0), 1: SYM("b!", 1), 2: SYM("cX", 2)}
+        assert cols.klass is None
+        assert cols.names == ["A", "b!", "cX"]     
+
+    def test_COLS_add(self):
+            
+        row = ["A", "b!", "c+"]
+        cols = COLS(row)
+
+        # Test case: Check if col.add works
+        new_row = ["D", "e!", "f+"]
+        cols.add(new_row)
+        assert cols.x == {0: NUM("A", 0), 3: NUM("d", 3)}
+        assert cols.y == {1: SYM("b!", 1), 2: SYM("c+", 2),4: SYM("e!", 4), 5: SYM("f+", 5)}
+        assert cols.all == {
+            0: NUM("A", 0),
+            1: SYM("b!", 1),
+            2: SYM("c+", 2),
+            3: NUM("D", 3),
+            4: SYM("e!", 4),
+            5: SYM("f+", 5),
+        }
+        assert cols.klass is None
+        assert cols.names == ["A", "b!", "c+", "D", "e!", "f+"]  
 
 if __name__ == "__main__":
     unittest.main()
