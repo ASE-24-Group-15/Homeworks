@@ -7,3 +7,5 @@ Command line options:
   -m --m        low attribute frequency kludge  = 2
   -s --seed     random number seed              = 31210
   -t --todo     start up action                 = help"""
+global the
+the = {}
