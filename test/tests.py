@@ -152,7 +152,7 @@ class TestGateScript(unittest.TestCase):
     # Tricks test cases end here
         
     #Num test cases start here
-    def test_Num_add(self):
+    def test_Num(self):
         num = NUM()
         nums = [5, 5, 5, 5, 10, 10]
         for n in nums:
@@ -163,14 +163,24 @@ class TestGateScript(unittest.TestCase):
     #Num test cases end here
         
     #Sym test cases start here
-    def test_Sym_add(self):
+    def test_Sym(self):
         sym = SYM()
         syms = ['s', 's', 'd', 'd', 's', 's']
         for s in syms:
             sym.add(s)
 
+        # Test mid and div methods
         self.assertEqual('s', sym.mid())
         self.assertAlmostEqual(0.9182958340544896, sym.div(), places=12)
+
+        # Test like method
+        x = 's'
+        prior = 0.5
+        m = 1
+        result = sym.like(x, prior, m)
+        
+        expected_result = (sym.has.get(x, 0) + m * prior) / (sym.n + m)
+        self.assertEqual(expected_result, result)
 
     #Sym test cases end here
 
