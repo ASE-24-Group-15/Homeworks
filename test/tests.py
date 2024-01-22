@@ -11,21 +11,6 @@ from src.l import l
 from src.row import ROW
 import src.tricks as tricks
 
-
-# def test_Num():
-#     num = NUM()
-#     nums = [5, 5, 5, 5, 10, 10]
-#     for n in nums:
-#         num.add(n)
-#     return 40//6 == num.mid() and 2.581988897471611 == num.div()
-
-# def test_Sym():
-#     sym = SYM()
-#     syms = ['s', 's', 'd', 'd', 's', 's']
-#     for s in syms:
-#         sym.add(s)
-#     return 's' == sym.mid and 0.9182958340544896 == sym.div()
-
 import os
 import subprocess
 import sys
@@ -176,6 +161,18 @@ class TestGateScript(unittest.TestCase):
         self.assertEqual(40 // 6, num.mid())
         self.assertAlmostEqual(2.581988897471611, num.div(), places=12)
     #Num test cases end here
+        
+    #Sym test cases start here
+    def test_Sym_add(self):
+        sym = SYM()
+        syms = ['s', 's', 'd', 'd', 's', 's']
+        for s in syms:
+            sym.add(s)
+
+        self.assertEqual('s', sym.mid())
+        self.assertAlmostEqual(0.9182958340544896, sym.div(), places=12)
+
+    #Sym test cases end here
 
 if __name__ == "__main__":
     unittest.main()
