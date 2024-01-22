@@ -9,7 +9,8 @@ def learn(data,row,my):
       my['tries'] += 1
       my['acc'] += 1 if kl == row.likes(my['datas'])[0] else 0
 
-  my['datas'][kl] = my['datas'].get(kl, DATA(data.cols.names)) 
-  my['datas'][kl].add(row)
+  if kl not in my['datas']:  
+     my['datas'][kl] = DATA(data.cols.names)
+  my['datas'][kl].add(row.cells)
   
   return 
