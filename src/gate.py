@@ -17,9 +17,12 @@ OPTIONS:
   -T --Top    max. good cuts to explore   = 10 
 """
 
-import re, ast
+import ast
 import argparse
 from data import DATA
+from diabetes import eg_bayes
+from soybean import eg_km
+import config
 
 def coerce(x):
    try : return ast.literal_eval(x)
@@ -42,10 +45,11 @@ def argument_parser():
     parser.add_argument('-H', '--Halves', type=int, default=512, help='#examples used in halving')
     parser.add_argument('-p', '--p', type=int, default=2, help='distance coefficient')
     parser.add_argument('-s', '--seed', type=int, default=1234567891, help='random number seed')
-    parser.add_argument('-m', '--min', type=float, default=.5, help='minimum size')
     parser.add_argument('-r', '--rest', type=int, default=3, help='|rest| is |best|*rest')
     parser.add_argument('-t', '--todo', type=str, default="help", help='Start up action')
     parser.add_argument('-T', '--Top', type=int, default=10, help='max. good cuts to explore')
+    parser.add_argument('-k', '--k', type=int, default=1, help='low class frequency kludge')
+    parser.add_argument('-m', '--m', type=int, default=2, help='low attribute frequency kludge')
     return parser
 
 class SLOTS(dict): 
@@ -53,9 +57,16 @@ class SLOTS(dict):
   __setattr__ = dict.__setitem__
   __repr__ = o
 
-args = argument_parser().parse_args()
+def main():
+  args = argument_parser().parse_args()
+  config.the = SLOTS(__doc__= __doc__, **vars(args))
+  if config.the.todo == "stats":
+    data = DATA(config.the.file, None)
+    getattr(data, config.the.todo)()
+  if config.the.todo == "diabetes":
+    eg_bayes()
+  if config.the.todo == "soybean":
+    eg_km()
 
-the = SLOTS(__doc__= __doc__, **vars(args))
-
-data = DATA(the.file, None)
-getattr(data, the.todo)()
+if __name__ == "__main__":
+  main()
