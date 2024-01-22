@@ -165,6 +165,17 @@ class TestGateScript(unittest.TestCase):
         expected_output = [[1, 2, 3], [4, 5, 6]]
         self.assertEqual(result, expected_output)
     # Tricks test cases end here
+        
+    #Num test cases start here
+    def test_Num_add(self):
+        num = NUM()
+        nums = [5, 5, 5, 5, 10, 10]
+        for n in nums:
+            num.add(n)
+        
+        self.assertEqual(40 // 6, num.mid())
+        self.assertAlmostEqual(2.581988897471611, num.div(), places=12)
+    #Num test cases end here
 
 if __name__ == "__main__":
     unittest.main()
