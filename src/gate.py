@@ -19,11 +19,11 @@ OPTIONS:
 
 import ast
 import argparse
-from data import DATA
-from diabetes import eg_bayes
-from soybean import eg_km
-from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
-import config
+from src.data import DATA
+from src.diabetes import eg_bayes
+from src.soybean import eg_km
+from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
+import src.config as config
 
 def coerce(x):
    try : return ast.literal_eval(x)
