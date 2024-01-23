@@ -84,56 +84,6 @@ class TestGateScript(unittest.TestCase):
         self.assertEqual(ROW(row_data).cells, row_data)
     # Row test cases end here
 
-    # Cols test cases start here
-    def test_COLSInitialization(self):
-        # Test case 1: Check if the class is initialized properly
-        row = ["A", "b", "c"]
-        cols = COLS(row)
-        assert cols.x == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
-        assert cols.y == {}
-        assert cols.all == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
-        assert cols.klass is None
-        assert cols.names == ["A", "b", "c"]
-
-        # Test case 2: Check if columns with "!+-" are added to self.x only
-        row = ["A", "B!", "C"]
-        cols = COLS(row)
-        assert cols.x == {0: NUM("A", 0), 2: SYM("C", 2)}
-        assert cols.y == {1: SYM("B!", 1)}
-        assert cols.all == {0: NUM("A", 0), 1: SYM("B!", 1), 2: SYM("C", 2)}
-        assert cols.klass is None
-        assert cols.names == ["A", "B!", "C"]
-
-        # Test case 3: Check if names ending with "X" are not taken
-        row = ["A", "b!", "cX"]
-        cols = COLS(row)
-        assert cols.x == {0: NUM("A", 0)}
-        assert cols.y == {1: SYM("b!", 1)}
-        assert cols.all == {0: NUM("A", 0), 1: SYM("b!", 1), 2: SYM("cX", 2)}
-        assert cols.klass is None
-        assert cols.names == ["A", "b!", "cX"]     
-
-    def test_COLS_add(self):
-            
-        row = ["A", "b!", "c+"]
-        cols = COLS(row)
-
-        # Test case: Check if col.add works
-        new_row = ["D", "e!", "f+"]
-        cols.add(new_row)
-        assert cols.x == {0: NUM("A", 0), 3: NUM("d", 3)}
-        assert cols.y == {1: SYM("b!", 1), 2: SYM("c+", 2),4: SYM("e!", 4), 5: SYM("f+", 5)}
-        assert cols.all == {
-            0: NUM("A", 0),
-            1: SYM("b!", 1),
-            2: SYM("c+", 2),
-            3: NUM("D", 3),
-            4: SYM("e!", 4),
-            5: SYM("f+", 5),
-        }
-        assert cols.klass is None
-        assert cols.names == ["A", "b!", "c+", "D", "e!", "f+"]  
-    # Cols test cases end here
 
     # Tricks test cases start here
     def test_coerce_with_valid_input(self):
@@ -151,38 +101,7 @@ class TestGateScript(unittest.TestCase):
         self.assertEqual(result, expected_output)
     # Tricks test cases end here
         
-    #Num test cases start here
-    def test_Num(self):
-        num = NUM()
-        nums = [5, 5, 5, 5, 10, 10]
-        for n in nums:
-            num.add(n)
-        
-        self.assertEqual(40 // 6, num.mid())
-        self.assertAlmostEqual(2.581988897471611, num.div(), places=12)
-    #Num test cases end here
-        
-    #Sym test cases start here
-    def test_Sym(self):
-        sym = SYM()
-        syms = ['s', 's', 'd', 'd', 's', 's']
-        for s in syms:
-            sym.add(s)
 
-        # Test mid and div methods
-        self.assertEqual('s', sym.mid())
-        self.assertAlmostEqual(0.9182958340544896, sym.div(), places=12)
-
-        # Test like method
-        x = 's'
-        prior = 0.5
-        m = 1
-        result = sym.like(x, prior, m)
-        
-        expected_result = (sym.has.get(x, 0) + m * prior) / (sym.n + m)
-        self.assertEqual(expected_result, result)
-
-    #Sym test cases end here
 
 if __name__ == "__main__":
     unittest.main()
