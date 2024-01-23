@@ -4,7 +4,7 @@ from cols import COLS
 from l import l
 
 class DATA:
-    def __init__(self, src, fun):
+    def __init__(self, src, fun = None):
         self.rows = []
         self.cols = None
         if isinstance(src, str):
@@ -14,8 +14,8 @@ class DATA:
             for x in src:
                 self.add(x, fun)
         
-    def add(self, t, fun):
-        row = ROW(t)
+    def add(self, t, fun=None):
+        row = t if not isinstance(t, list) and t.cells else ROW(t)
         if self.cols:
             if(fun):
                 fun(self, row)
@@ -30,6 +30,3 @@ class DATA:
             u[targetCols[col].txt] = l().rnd(getattr(targetCols[col], fun or "mid")(), ndivs)
         print(u)
         return u
-        
-        
-        

@@ -1,4 +1,5 @@
 import math
+import config
 class SYM:
     #Create
     def __init__(self, s= " ", n = 0):
@@ -12,7 +13,7 @@ class SYM:
     #Update
     def add(self, x):
         if x != "?":
-            self.n = self.n + 1
+            self.n += 1
             self.has[x] = 1 + self.has.get(x,0)
             if self.has[x] > self.most:
                 self.most, self.mode = self.has[x], x 
@@ -30,5 +31,5 @@ class SYM:
     def small(self):
         return 0
     
-    def like(self, x, prior, m):
-        return (self.has.get(x, 0) + m*prior) / (self.n + m) 
+    def like(self, x, prior):
+        return (self.has.get(x, 0) + config.the.m*prior) / (self.n + config.the.m) if (self.n + config.the.m) != 0 else 1

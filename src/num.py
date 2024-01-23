@@ -26,11 +26,11 @@ class NUM:
         return self.mu
     
     def div(self):
-        return 0 if self.n < 2 else (self.m2 / self.n - 1) ** 0.5
+        return 0 if self.n < 2 else (self.m2 / (self.n - 1)) ** 0.5
 
     #Likelihood
     def like(self, x, _):
-        mu, sd = self.mid(), self.div() + 1E-30
+        mu, sd = self.mid(), (self.div() + 1E-30)
         nom = 2.718 ** (-.5 * (x - mu) ** 2 / (sd ** 2))
         denom = (sd * 2.5 + 1E-30)
         return nom / denom

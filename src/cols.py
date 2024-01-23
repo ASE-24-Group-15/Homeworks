@@ -17,7 +17,7 @@ class COLS:
         self.y = y
         self.all = all
         self.klass = klass
-        self.names = row.cells
+        self.names = [row.cells]
     
     #Update
     def add(self, row):
