@@ -17,7 +17,7 @@ class TestNumFunction(unittest.TestCase):
         for n in nums:
             num.add(n)
         
-        self.assertEqual(40 // 6, num.mid())
+        self.assertEqual(6.666666666666667, num.mid())
         self.assertAlmostEqual(2.581988897471611, num.div(), places=12)
 
         # Test case for the like method in NUM

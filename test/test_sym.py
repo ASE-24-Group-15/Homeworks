@@ -25,7 +25,7 @@ class TestSymFunction(unittest.TestCase):
         x = 's'
         prior = 0.5
         m = 1
-        result = sym.like(x, prior, m)
+        result = sym.like(x, prior)
 
         expected_result = (sym.has.get(x, 0) + m * prior) / (sym.n + m)
         self.assertEqual(expected_result, result)
