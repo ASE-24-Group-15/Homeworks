@@ -1,12 +1,36 @@
 # ASE-24
 # Homeworks
-CSC 591(021) Group-19
+CSC 591(021) Group-15
 
-## Steps to run the program
+# Steps to run the program
+
+## for w2
 ```
 cd src
 python gate.py -f ../data/filename -t stats
 ```
+
+## for w3
+```
+cd src
+```
+- To run task 3 of running Naive Bayes Classifier on diabetes.csv
+```
+python gate.py -t diabetes 
+```
+- To run task 4 of running Naive Bayes Classifier on diabetes.csv using two loops that explore low frequency settings $k \in \{0,1,2,3\}$ and $m \in \{0,1,2,3\}$.
+.
+```
+python gate.py -t diabetes-elfs
+```
+- To run task 4 of running Naive Bayes Classifier on soybean.csv using two loops that explore low frequency settings $k \in \{0,1,2,3\}$ and $m \in \{0,1,2,3\}$.
+```
+python gate.py -t soybean 
+```
+On experimenting with different values of k and m, we observed that the accuracies for the diabetes dataset does not change, whereas for the soybean dataset the m value of 1 yields the highest accuracies.
+
+## for w4
+...to be continued
 
 :sparkles: Contributors
 ---
