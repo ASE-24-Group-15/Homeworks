@@ -64,3 +64,5 @@ class TestGateScript(unittest.TestCase):
             main()
 
         mock_eg_km.assert_called_once()
+
+

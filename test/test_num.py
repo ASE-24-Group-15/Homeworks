@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import MagicMock
 from src.num import NUM
 
-class TestLearnFunction(unittest.TestCase):
+class TestNumFunction(unittest.TestCase):
 
     #Num test cases start here
     def test_Num(self):
@@ -34,3 +34,7 @@ class TestLearnFunction(unittest.TestCase):
 
 
     #Num test cases end here
+        
+
+if __name__ == "__main__":
+    unittest.main()

@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import MagicMock
 from src.sym import SYM
 
-class TestLearnFunction(unittest.TestCase):
+class TestSymFunction(unittest.TestCase):
 
     #Sym test cases start here
     def test_Sym(self):
@@ -32,3 +32,5 @@ class TestLearnFunction(unittest.TestCase):
 
     #Sym test cases end here
 
+if __name__ == "__main__":
+    unittest.main()

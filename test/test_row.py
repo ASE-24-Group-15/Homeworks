@@ -8,7 +8,7 @@ import unittest
 from unittest.mock import MagicMock
 from src.row import ROW
 
-class TestLearnFunction(unittest.TestCase):
+class TestRowFunction(unittest.TestCase):
 
     #Row test cases start here
     def test_Row(self):
@@ -19,3 +19,6 @@ class TestLearnFunction(unittest.TestCase):
 
     #Row test cases end here
 
+
+if __name__ == "__main__":
+    unittest.main()

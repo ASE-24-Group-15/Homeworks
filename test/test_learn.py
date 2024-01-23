@@ -26,3 +26,6 @@ class TestLearnFunction(unittest.TestCase):
         learn(data_mock, row_mock, my_dict_2)
         self.assertIn('class1', my_dict_2['datas'])
         self.assertEqual(my_dict_2['datas']['class1'], data_mock)
+
+if __name__ == "__main__":
+    unittest.main()
