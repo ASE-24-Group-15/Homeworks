@@ -22,6 +22,7 @@ import argparse
 from data import DATA
 from diabetes import eg_bayes
 from soybean import eg_km
+from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
 import config
 
 def coerce(x):
@@ -64,7 +65,9 @@ def main():
     data = DATA(config.the.file, None)
     getattr(data, config.the.todo)()
   if config.the.todo == "diabetes":
-    eg_bayes()
+    eg_bayes() 
+  if config.the.todo == "diabetes-elfs":
+    diabetes_explore_low_frequency_settings()
   if config.the.todo == "soybean":
     eg_km()
 
