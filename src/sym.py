@@ -1,5 +1,5 @@
 import math
-import config
+import src.config as config
 class SYM:
     #Create
     def __init__(self, s= " ", n = 0):

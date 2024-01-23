@@ -1,5 +1,5 @@
-from num import NUM
-from sym import SYM
+from src.num import NUM
+from src.sym import SYM
 
 class COLS:
     #Create
