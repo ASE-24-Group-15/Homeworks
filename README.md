@@ -27,8 +27,9 @@ python gate.py -t diabetes-elfs
 ```
 python gate.py -t soybean 
 ```
-On experimenting with different values of k and m, we observed that the accuracies for the diabetes dataset does not change, whereas for the soybean dataset the m value of 1 yields the highest accuracies.
+On experimenting with different values of k and m, we observed that the accuracies for the diabetes dataset does not change, whereas for the soybean dataset the m value of 1 (for $k \in \{0,1,2,3\}$) yields the highest accuracies.
 
+The reports have been addded in [w3](https://github.com/ASE-24-Group-15/Homeworks/tree/main/w3)
 ## for w4
 ...to be continued
 
