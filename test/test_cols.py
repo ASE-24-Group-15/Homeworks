@@ -5,7 +5,7 @@ from src.num import NUM
 from src.sym import SYM
 from src.cols import COLS
 
-class TestLearnFunction(unittest.TestCase):
+class TestColsFunction(unittest.TestCase):
     # Cols test cases start here
     def test_COLSInitialization(self):
         # Test case 1: Check if the class is initialized properly
@@ -56,3 +56,7 @@ class TestLearnFunction(unittest.TestCase):
         assert cols.klass is None
         assert cols.names == ["A", "b!", "c+", "D", "e!", "f+"]  
     # Cols test cases end here
+
+
+if __name__ == "__main__":
+    unittest.main()

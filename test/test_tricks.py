@@ -1,7 +1,7 @@
 import src.tricks as tricks
 import unittest
 
-class TestLearnFunction(unittest.TestCase):
+class TestTricksFunction(unittest.TestCase):
     # Tricks test cases start here
     def test_coerce_with_valid_input(self):
         result = tricks.coerce("42")
@@ -17,3 +17,7 @@ class TestLearnFunction(unittest.TestCase):
         expected_output = [[1, 2, 3], [4, 5, 6]]
         self.assertEqual(result, expected_output)
     # Tricks test cases end here
+        
+
+if __name__ == "__main__":
+    unittest.main()

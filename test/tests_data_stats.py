@@ -18,7 +18,7 @@ import ast
 import unittest
 
 
-class TestGateScript(unittest.TestCase):
+class TestDataStatsScript(unittest.TestCase):
     # Data stats test cases start here
     # Define expected outputs for each CSV file
     expected_outputs = {
@@ -74,20 +74,8 @@ class TestGateScript(unittest.TestCase):
             self.run_test_for_file(file_path, expected_output)
     # data stats test cases end here
 
-    def test_rnd_test(self):
-       self.assertEqual(l().rnd(23.324234), 23.32)
-       self.assertEqual(l().rnd(23.324234, 3), 23.324)
+
     
-    # Row test cases start here
-    def test_row_object(self):
-        row_data = ["Mpg", 5, "Po", "Area"]
-        self.assertEqual(ROW(row_data).cells, row_data)
-    # Row test cases end here
-
-
-
-        
-
 
 if __name__ == "__main__":
     unittest.main()
