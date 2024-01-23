@@ -3,7 +3,7 @@ import unittest
 
 from src.num import NUM
 from src.sym import SYM
-from src.cols import COLS
+
 
 class TestColsFunction(unittest.TestCase):
     # Cols test cases start here
@@ -43,7 +43,7 @@ class TestColsFunction(unittest.TestCase):
         # Test case: Check if col.add works
         new_row = ["D", "e!", "f+"]
         cols.add(new_row)
-        assert cols.x == {0: NUM("A", 0), 3: NUM("d", 3)}
+        assert cols.x == {0: NUM("A", 0), 3: NUM("D", 3)}
         assert cols.y == {1: SYM("b!", 1), 2: SYM("c+", 2),4: SYM("e!", 4), 5: SYM("f+", 5)}
         assert cols.all == {
             0: NUM("A", 0),
