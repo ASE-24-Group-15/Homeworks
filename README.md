@@ -2,11 +2,32 @@
 # Homeworks
 CSC 591(021) Group-19
 
-## Steps to run the program
+## Steps to run the program for w2
 ```
 cd src
 python gate.py -f ../data/filename -t stats
 ```
+
+## Steps to run the program for w3
+```
+cd src
+```
+- To run task 3 of running Naive Bayes Classifier on diabetes.csv
+```
+python gate.py -t diabetes 
+```
+- To run task 4 of running Naive Bayes Classifier on diabetes.csv using two loops that explore low frequency settings $k \in \{0,1,2,3\}$ and $m \in \{0,1,2,3\}$.
+.
+```
+python gate.py -t diabetes-elfs
+```
+- To run task 4 of running Naive Bayes Classifier on soybean.csv using two loops that explore low frequency settings $k \in \{0,1,2,3\}$ and $m \in \{0,1,2,3\}$.
+- 
+```
+python gate.py -t soybean 
+```
+
+
 
 :sparkles: Contributors
 ---
