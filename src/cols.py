@@ -6,7 +6,7 @@ class COLS:
     def __init__(self, row):
         klass, col = None, None
         x,y,all = {}, {}, {}
-        for at, txt in enumerate(row.cells):
+        for at, txt in enumerate(row):
             col = (NUM if txt[0].isupper() else SYM)(txt, at)
             all[len(all)] = col 
             if not txt.endswith("X"):
