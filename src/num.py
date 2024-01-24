@@ -15,7 +15,7 @@ class NUM:
     def add(self, x):
         if x != "?":
             self.n = self.n + 1
-            d = x - self.mu
+            d = int(x) - self.mu
             self.mu = self.mu + (d / self.n)
             self.m2 = self.m2 + d * (x - self.mu)
             self.lo = min(x, self.lo)
