@@ -17,11 +17,11 @@ class COLS:
         self.y = y
         self.all = all
         self.klass = klass
-        self.names = [row.cells]
+        self.names = row
     
     #Update
-    def add(self, row):
+    def add(self, new_row):
         for cols in [self.x, self.y]:
             for _, col in cols.items():
-                col.add(row.cells[col.at])
-        return row
+                col.add(new_row[col.at])
+        return new_row
