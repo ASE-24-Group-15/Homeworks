@@ -7,7 +7,8 @@ class COLS:
         klass, col = None, None
         self.x, self.y, self.all = {}, {}, []
         for at, txt in enumerate(row['cells'], start=1):
-            col = (NUM if txt[0].isalpha() and txt[0].isupper() else SYM)(txt, at)
+            col_class = NUM if txt[0].isalpha() and txt[0].isupper() else SYM
+            col = col_class(txt, at)
             self.all.append(col)
             if not txt.endswith("X"):
                 if txt.endswith("!"):
