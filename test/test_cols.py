@@ -15,7 +15,7 @@ class TestColsFunction(unittest.TestCase):
         assert cols.y == {}
         assert cols.all == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
         assert cols.klass is None
-        assert cols.names == ["A", "b", "c"]
+        assert cols.names == row
 
         # Test case 2: Check if columns with "!+-" are added to self.x only
         row = ["A", "B!", "C"]
@@ -24,7 +24,7 @@ class TestColsFunction(unittest.TestCase):
         assert cols.y == {1: SYM("B!", 1)}
         assert cols.all == {0: NUM("A", 0), 1: SYM("B!", 1), 2: SYM("C", 2)}
         assert cols.klass is None
-        assert cols.names == ["A", "B!", "C"]
+        assert cols.names == row
 
         # Test case 3: Check if names ending with "X" are not taken
         row = ["A", "b!", "cX"]
@@ -33,7 +33,7 @@ class TestColsFunction(unittest.TestCase):
         assert cols.y == {1: SYM("b!", 1)}
         assert cols.all == {0: NUM("A", 0), 1: SYM("b!", 1), 2: SYM("cX", 2)}
         assert cols.klass is None
-        assert cols.names == ["A", "b!", "cX"]     
+        assert cols.names == row   
 
     def test_COLS_add(self):
             
@@ -54,7 +54,7 @@ class TestColsFunction(unittest.TestCase):
             5: SYM("f+", 5),
         }
         assert cols.klass is None
-        assert cols.names == ["A", "b!", "c+", "D", "e!", "f+"]  
+        assert cols.names == row + new_row  
     # Cols test cases end here
 
 
