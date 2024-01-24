@@ -9,39 +9,39 @@ class TestColsFunction(unittest.TestCase):
     # Cols test cases start here
     def test_COLSInitialization(self):
         # Test case 1: Check if the class is initialized properly
-        row = ["A", "b", "c"]
+        row = {'cells': ["A", "b", "c"]}
         cols = COLS(row)
         assert cols.x == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
         assert cols.y == {}
         assert cols.all == {0: NUM("A", 0), 1: SYM("b", 1), 2: SYM("c", 2)}
         assert cols.klass is None
-        assert cols.names == row
+        assert cols.names == row['cells']
 
         # Test case 2: Check if columns with "!+-" are added to self.x only
-        row = ["A", "B!", "C"]
+        row = {'cells': ["A", "B!", "C"]}
         cols = COLS(row)
         assert cols.x == {0: NUM("A", 0), 2: SYM("C", 2)}
         assert cols.y == {1: SYM("B!", 1)}
         assert cols.all == {0: NUM("A", 0), 1: SYM("B!", 1), 2: SYM("C", 2)}
         assert cols.klass is None
-        assert cols.names == row
+        assert cols.names == row['cells']
 
         # Test case 3: Check if names ending with "X" are not taken
-        row = ["A", "b!", "cX"]
+        row = {'cells': ["A", "b!", "cX"]}  
         cols = COLS(row)
         assert cols.x == {0: NUM("A", 0)}
         assert cols.y == {1: SYM("b!", 1)}
         assert cols.all == {0: NUM("A", 0), 1: SYM("b!", 1), 2: SYM("cX", 2)}
         assert cols.klass is None
-        assert cols.names == row   
+        assert cols.names == row['cells']   
 
     def test_COLS_add(self):
             
-        row = ["A", "b!", "c+"]
+        row = {'cells': ["A", "b!", "c+"]}
         cols = COLS(row)
 
         # Test case: Check if col.add works
-        new_row = ["D", "e!", "f+"]
+        new_row = {'cells': ["D", "e!", "f+"]}
         cols.add(new_row)
         assert cols.x == {0: NUM("A", 0), 3: NUM("d", 3)}
         assert cols.y == {1: SYM("b!", 1), 2: SYM("c+", 2),4: SYM("e!", 4), 5: SYM("f+", 5)}
@@ -54,7 +54,7 @@ class TestColsFunction(unittest.TestCase):
             5: SYM("f+", 5),
         }
         assert cols.klass is None
-        assert cols.names == row + new_row  
+        assert cols.names == row['cells'] + new_row['cells']
     # Cols test cases end here
 
 
