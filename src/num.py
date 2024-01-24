@@ -14,6 +14,7 @@ class NUM:
     #Update
     def add(self, x):
         if x != "?":
+            x = float(x) 
             self.n = self.n + 1
             d = x - self.mu
             self.mu = self.mu + (d / self.n)
