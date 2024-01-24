@@ -5,7 +5,7 @@ class COLS:
     #Create
     def __init__(self, row):
         klass, col = None, None
-        x,y,all = {}, {}, {}
+        self.x, self.y, self.all = {}, {}, {}
         for at, txt in enumerate(row['cells'], start=1):
             col = (NUM if txt[0].isalpha() and txt[0].isupper() else SYM)(txt, at)
             self.all.append(col)
@@ -13,9 +13,6 @@ class COLS:
                 if txt.endswith("!"):
                     klass = col 
                 (self.y if txt.endswith("!") or txt.endswith("+") or txt.endswith("-") else self.x)[at] = col
-        self.x = x 
-        self.y = y
-        self.all = all
         self.klass = klass
         self.names = row['cells']
     
