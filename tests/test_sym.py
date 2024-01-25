@@ -7,6 +7,8 @@ sys.path.insert(1, root_dir)
 import unittest
 from unittest.mock import MagicMock
 from src.sym import SYM
+import src.config as config
+
 
 class TestSymFunction(unittest.TestCase):
 
@@ -21,13 +23,16 @@ class TestSymFunction(unittest.TestCase):
         self.assertEqual('s', sym.mid())
         self.assertAlmostEqual(0.9182958340544896, sym.div(), places=12)
 
+        from src.gate import argument_parser, SLOTS
+        args = argument_parser().parse_args()
+        config.the = SLOTS(__doc__= __doc__, **vars(args))
         # Test like method
         x = 's'
         prior = 0.5
-        m = 1
-        result = sym.like(x, prior, m)
+        config.the.m= 1
+        result = sym.like(x, prior)
 
-        expected_result = (sym.has.get(x, 0) + m * prior) / (sym.n + m)
+        expected_result = (sym.has.get(x, 0) + config.the.m * prior) / (sym.n + config.the.m)
         self.assertEqual(expected_result, result)
 
     #Sym test cases end here
