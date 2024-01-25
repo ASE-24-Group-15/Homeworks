@@ -5,23 +5,21 @@ class COLS:
     #Create
     def __init__(self, row):
         klass, col = None, None
-        x,y,all = {}, {}, {}
-        for at, txt in enumerate(row.cells):
-            col = (NUM if txt[0].isupper() else SYM)(txt, at)
-            all[len(all)] = col 
+        self.x, self.y, self.all = {}, {}, []
+        for at, txt in enumerate(row['cells'], start=1):
+            col_class = NUM if txt[0].isalpha() and txt[0].isupper() else SYM
+            col = col_class(txt, at)
+            self.all.append(col)
             if not txt.endswith("X"):
                 if txt.endswith("!"):
                     klass = col 
-                (y if txt[-1] in "!+-" else x)[at] = col
-        self.x = x 
-        self.y = y
-        self.all = all
+                (self.y if txt.endswith("!") or txt.endswith("+") or txt.endswith("-") else self.x)[at] = col
         self.klass = klass
-        self.names = [row.cells]
+        self.names = row['cells']
     
     #Update
     def add(self, row):
-        for cols in [self.x, self.y]:
-            for _, col in cols.items():
-                col.add(row.cells[col.at])
+        for cols in [self.x.values(), self.y.values()]:
+            for col in cols:
+                col.add(row['cells'][col.at])
         return row

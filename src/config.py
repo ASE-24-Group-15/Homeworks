@@ -8,4 +8,5 @@ Command line options:
   -s --seed     random number seed              = 31210
   -t --todo     start up action                 = help"""
 global the
-the = {}
+from collections import defaultdict
+the = defaultdict()
