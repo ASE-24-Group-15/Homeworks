@@ -1,6 +1,7 @@
-from learn import learn 
-from data import DATA
-import config
+from src.learn import learn 
+from src.data import DATA
+import src.config as config
+
 #Test on Soybean
 def eg_km():
     print("#{:4s}\t{}\t{}".format("acc", "k", "m"))
