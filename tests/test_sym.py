@@ -23,8 +23,9 @@ class TestSymFunction(unittest.TestCase):
         self.assertEqual('s', sym.mid())
         self.assertAlmostEqual(0.9182958340544896, sym.div(), places=12)
         
-        args = argument_parser().parse_args()
-        config.the = SLOTS(__doc__= __doc__, **vars(args))
+        # args = argument_parser().parse_args()
+        # config.the = SLOTS(__doc__= __doc__, **vars(args))
+        config.the = SLOTS()
         
         # Test like method
         x = 's'
