@@ -2,7 +2,7 @@ import sys
 import os
 current_dir = os.path.dirname(os.path.realpath(__file__))
 root_dir = os.path.abspath(os.path.join(current_dir, ".."))
-sys.path.insert(0, root_dir)
+sys.path.insert(1, root_dir)
 
 import unittest
 from unittest.mock import patch, MagicMock
