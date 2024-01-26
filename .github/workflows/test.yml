@@ -7,8 +7,14 @@ jobs:
     runs-on: ubuntu-latest 
     
     steps:
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+        
     - name : Checkout code
       uses : actions/checkout@v2
       
     - name: Run tests
-      run: python -m unittest discover
+      run: python3 -m unittest discover -s tests
