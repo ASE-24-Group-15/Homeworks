@@ -1,4 +1,6 @@
-from data import DATA
+from src.data import DATA
+
+# from data import DATA
 
 def learn(data,row,my):
   

@@ -17,13 +17,29 @@ OPTIONS:
   -T --Top    max. good cuts to explore   = 10 
 """
 
+import os
+import sys
+
+# Add project root directory to Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+sys.path.append(parent_dir)
+
 import ast
 import argparse
-from data import DATA
-from diabetes import eg_bayes
-from soybean import eg_km
-from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
-import config
+from src.data import DATA
+from src.diabetes import eg_bayes
+from src.soybean import eg_km
+from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
+import src.config as config
+
+# import ast
+# import argparse
+# from data import DATA
+# from diabetes import eg_bayes
+# from soybean import eg_km
+# from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
+# import config as config
 
 def coerce(x):
    try : return ast.literal_eval(x)

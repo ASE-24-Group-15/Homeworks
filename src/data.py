@@ -1,7 +1,12 @@
-from tricks import csv
-from row import ROW
-from cols import COLS
-from l import l
+from src.tricks import csv
+from src.row import ROW
+from src.cols import COLS
+from src.l import l
+
+# from tricks import csv
+# from row import ROW
+# from cols import COLS
+# from l import l
 
 class DATA:
     def __init__(self, src, fun = None):
@@ -11,8 +16,9 @@ class DATA:
             for x in csv(src):
                 self.add(x, fun)
         else:
-            for x in src:
-                self.add(x, fun)
+            # for x in src:
+            #     self.add(x, fun)
+            pass
         
     def add(self, t, fun=None):
         row = t if not isinstance(t, list) and t.cells else ROW(t)
