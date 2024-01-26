@@ -6,7 +6,7 @@ sys.path.insert(0, root_dir)
 
 import unittest
 from unittest.mock import patch, MagicMock
-from ..src.gate import argument_parser, main
+from src.gate import argument_parser, main
 
 class TestGateScript(unittest.TestCase):
 
