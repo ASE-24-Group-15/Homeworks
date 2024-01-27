@@ -15,7 +15,7 @@ class DATA:
         if isinstance(src, str):
             for x in csv(src):
                 self.add(x, fun)
-        else:
+        elif src is not None:
             for x in src:
                 self.add(x, fun)
         
