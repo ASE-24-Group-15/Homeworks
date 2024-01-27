@@ -11,7 +11,6 @@ def generate_ascii_table(class_counts, total_rows, percentages):
 
     return table
 
-
 def read_csv(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()

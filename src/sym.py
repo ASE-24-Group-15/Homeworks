@@ -1,6 +1,3 @@
-# import math
-# import config
-
 import math
 import src.config as config
 

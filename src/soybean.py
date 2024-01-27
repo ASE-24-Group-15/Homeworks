@@ -2,10 +2,6 @@ from src.learn import learn
 from src.data import DATA
 import src.config as config
 
-# from learn import learn 
-# from data import DATA
-# import config
-
 #Test on Soybean
 def eg_km():
     print("#{:4s}\t{}\t{}".format("acc", "k", "m"))

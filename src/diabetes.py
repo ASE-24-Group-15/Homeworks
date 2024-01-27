@@ -1,9 +1,6 @@
 from src.data import DATA
 from src.learn import learn
 
-# from data import DATA
-# from learn import learn
-
 # Test on Diabates
 def eg_bayes():
   wme = {"acc":0,"datas":{},"tries":0,"n":0}

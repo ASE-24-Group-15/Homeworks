@@ -1,9 +1,6 @@
 from src.num import NUM
 from src.sym import SYM
 
-# from num import NUM
-# from sym import SYM
-
 class COLS:
     #Create
     def __init__(self, row):

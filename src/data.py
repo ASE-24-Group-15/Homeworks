@@ -3,11 +3,6 @@ from src.row import ROW
 from src.cols import COLS
 from src.l import l
 
-# from tricks import csv
-# from row import ROW
-# from cols import COLS
-# from l import l
-
 class DATA:
     def __init__(self, src, fun = None):
         self.rows = []

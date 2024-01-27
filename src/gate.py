@@ -33,14 +33,6 @@ from src.soybean import eg_km
 from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
 import src.config as config
 
-# import ast
-# import argparse
-# from data import DATA
-# from diabetes import eg_bayes
-# from soybean import eg_km
-# from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
-# import config as config
-
 def coerce(x):
    try : return ast.literal_eval(x)
    except Exception: return x.strip()
