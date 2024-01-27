@@ -11,19 +11,27 @@ OPTIONS:
   -h --help   show help                   = False
   -H --Halves #examples used in halving   = 512
   -p --p      distance coefficient        = 2
-  -s --seed   random number seed          = 1234567891
+  -S --seed   random number seed          = 1234567891
   -m --min    minimum size               = .5
   -r --rest   |rest| is |best|*rest        = 3
   -T --Top    max. good cuts to explore   = 10 
 """
 
+import os
+import sys
+
+# Add project root directory to Python path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+sys.path.append(parent_dir)
+
 import ast
 import argparse
-from data import DATA
-from diabetes import eg_bayes
-from soybean import eg_km
-from diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
-import config
+from src.data import DATA
+from src.diabetes import eg_bayes
+from src.soybean import eg_km
+from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
+import src.config as config
 
 def coerce(x):
    try : return ast.literal_eval(x)
@@ -45,7 +53,7 @@ def argument_parser():
     # parser.add_argument('-h', '--help', type=bool, default=False, help='show help')
     parser.add_argument('-H', '--Halves', type=int, default=512, help='#examples used in halving')
     parser.add_argument('-p', '--p', type=int, default=2, help='distance coefficient')
-    parser.add_argument('-s', '--seed', type=int, default=1234567891, help='random number seed')
+    parser.add_argument('-S', '--seed', type=int, default=1234567891, help='random number seed')
     parser.add_argument('-r', '--rest', type=int, default=3, help='|rest| is |best|*rest')
     parser.add_argument('-t', '--todo', type=str, default="help", help='Start up action')
     parser.add_argument('-T', '--Top', type=int, default=10, help='max. good cuts to explore')

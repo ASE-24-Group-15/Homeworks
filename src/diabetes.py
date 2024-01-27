@@ -1,5 +1,5 @@
-from data import DATA
-from learn import learn
+from src.data import DATA
+from src.learn import learn
 
 # Test on Diabates
 def eg_bayes():

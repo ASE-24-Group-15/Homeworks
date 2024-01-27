@@ -1,7 +1,7 @@
-from tricks import csv
-from row import ROW
-from cols import COLS
-from l import l
+from src.tricks import csv
+from src.row import ROW
+from src.cols import COLS
+from src.l import l
 
 class DATA:
     def __init__(self, src, fun = None):
@@ -10,7 +10,7 @@ class DATA:
         if isinstance(src, str):
             for x in csv(src):
                 self.add(x, fun)
-        else:
+        elif src is not None:
             for x in src:
                 self.add(x, fun)
         

@@ -22,7 +22,10 @@ class TestLearnFunction(unittest.TestCase):
         self.assertEqual(my_dict_1['acc'], 1)
 
         # Test case 2
-        my_dict_2 = {'n': 5, 'tries': 2, 'acc': 1, 'datas': {}}
+        my_dict_2 = {'n': 5, 'tries': 2, 'acc': 1, 'datas': {'class1': data_mock}}
         learn(data_mock, row_mock, my_dict_2)
         self.assertIn('class1', my_dict_2['datas'])
         self.assertEqual(my_dict_2['datas']['class1'], data_mock)
+
+if __name__ == "__main__":
+    unittest.main()
