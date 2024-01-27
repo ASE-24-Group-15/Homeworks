@@ -5,7 +5,7 @@ def coerce(s):
   except Exception: return s
 
 def csv(file="-"):
-  with  fileinput.FileInput(None if file=="-" else file) as src:
-    for line in src:
+  with  fileinput.FileInput(None if file=="-" else file) as source:
+    for line in source:
       line = re.sub(r'([\n\t\r"\' ]|#.*)', '', line)
       if line: yield [coerce(x) for x in line.split(",")]

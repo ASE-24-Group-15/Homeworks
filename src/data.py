@@ -16,9 +16,8 @@ class DATA:
             for x in csv(src):
                 self.add(x, fun)
         else:
-            # for x in src:
-            #     self.add(x, fun)
-            pass
+            for x in src:
+                self.add(x, fun)
         
     def add(self, t, fun=None):
         row = t if not isinstance(t, list) and t.cells else ROW(t)
