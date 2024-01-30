@@ -33,3 +33,10 @@ class ROW:
                 else:
                     out = out  +  float('-inf')
         return math.exp(1) ** out
+    
+    def d2h(self, data):
+        d, n = 0, 0
+        for col in data.cols.y.values():
+            n = n + 1
+            d = d + abs(col.heaven - col.norm(self.cells[col.at])) ** 2
+        return d ** .5 / n ** .5
