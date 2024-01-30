@@ -41,13 +41,20 @@ class DATA:
     def gate(self, budget0, budget, some):
         stats, bests = [], []
         rows = l.shuffle(self.rows)
+
+        print("1. top6", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]])
+        print("1. top50", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]])
+
+        rows.sort(key=lambda x: x.d2h(self))
+        print("3. most", [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]])
+
+        rows = l.shuffle(rows)
         lite = rows[:budget0]
         dark = rows[budget0:]
-        # print("1. top6", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]])
-        # print("1. top50", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]])
+
         for i in range(budget):
             best, rest = self.bestRest(lite, len(lite) ** some)
-            todo, selected = self.split(best, rest, lite, dark)
+            todo, selected = self.split(best, rest, lite, dark)            
             stats.append(selected.mid())
             bests.append(best.rows[0])
             lite.append(dark.pop(todo))
