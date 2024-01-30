@@ -2,6 +2,7 @@ from src.tricks import csv
 from src.row import ROW
 from src.cols import COLS
 from src.l import l
+import random
 
 class DATA:
     def __init__(self, src, fun = None):
@@ -42,22 +43,35 @@ class DATA:
         stats, bests = [], []
         rows = l.shuffle(self.rows)
 
-        print("1. top6", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]])
-        print("1. top50", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]])
+        with open('gate20_output', 'a') as output_file:
+            print("1. top6", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]] , file=output_file)
+            print("2. top50", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]], file=output_file)
 
-        rows.sort(key=lambda x: x.d2h(self))
-        print("3. most", [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]])
+            rows.sort(key=lambda x: x.d2h(self))
+            print("3. most", [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]], file=output_file)
 
-        rows = l.shuffle(rows)
-        lite = rows[:budget0]
-        dark = rows[budget0:]
+            rows = l.shuffle(rows)
+            lite = rows[:budget0]
+            dark = rows[budget0:]
 
-        for i in range(budget):
-            best, rest = self.bestRest(lite, len(lite) ** some)
-            todo, selected = self.split(best, rest, lite, dark)            
-            stats.append(selected.mid())
-            bests.append(best.rows[0])
-            lite.append(dark.pop(todo))
+            for i in range(budget):
+                best, rest = self.bestRest(lite, len(lite) ** some)
+                todo, selected = self.split(best, rest, lite, dark) 
+
+                rand_centroid = self.calculate_centroid(random.sample(dark, k=budget0+i)) 
+                print(f"4: rand {rand_centroid}", file=output_file)
+
+                mid_centroid = self.calculate_centroid(selected.rows)
+                print(f"5: mid {mid_centroid}", file=output_file)
+
+                top_row_values = [[best.cells[i] for i in list(self.cols.y.keys())] for best in bests[:1]]
+                print(f"6: top: {top_row_values}", file=output_file)
+
+                dark.pop(todo)
+
+                stats.append(selected.mid())
+                bests.append(best.rows[0])
+                lite.append(dark.pop(todo))
         return stats, bests
             
             
@@ -84,3 +98,13 @@ class DATA:
             if tmp > max:
                 out, max = i, tmp
         return out, selected
+    
+    
+    def calculate_centroid(self, data):
+        last_n_elements = [d.cells[-len(self.cols.y.keys()):] for d in data]
+        centroid = [sum(x) / len(x) for x in zip(*last_n_elements)]
+        return centroid
+
+
+
+        
