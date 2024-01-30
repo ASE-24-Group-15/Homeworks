@@ -39,39 +39,55 @@ class DATA:
         print(u)
         return u
     
-    def gate(self, budget0, budget, some):
+    def gate(self, budget0, budget, some, iter):
         stats, bests = [], []
         rows = l.shuffle(self.rows)
+        row1 = []
+        row2 = []
+        row3 = []
+        row4 = []
+        row5 = []
+        row6 = []
 
-        with open('gate20_output', 'a') as output_file:
-            print("1. top6", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]] , file=output_file)
-            print("2. top50", [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]], file=output_file)
+        
+        row1 += [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]]
 
-            rows.sort(key=lambda x: x.d2h(self))
-            print("3. most", [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]], file=output_file)
+        row2 += [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:50]]
 
-            rows = l.shuffle(rows)
-            lite = rows[:budget0]
-            dark = rows[budget0:]
+        rows.sort(key=lambda x: x.d2h(self))
+        row3 += [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]]
 
-            for i in range(budget):
-                best, rest = self.bestRest(lite, len(lite) ** some)
-                todo, selected = self.split(best, rest, lite, dark) 
+        rows = l.shuffle(rows)
+        lite = rows[:budget0]
+        dark = rows[budget0:]
 
-                rand_centroid = self.calculate_centroid(random.sample(dark, k=budget0+i)) 
-                print(f"4: rand {rand_centroid}", file=output_file)
+        for i in range(budget):
+            best, rest = self.bestRest(lite, len(lite) ** some)
+            todo, selected = self.split(best, rest, lite, dark) 
 
-                mid_centroid = self.calculate_centroid(selected.rows)
-                print(f"5: mid {mid_centroid}", file=output_file)
+            rand_centroid = self.calculate_centroid(random.sample(dark, k=budget0+i)) 
+            row4.append(rand_centroid)
 
-                top_row_values = [[best.cells[i] for i in list(self.cols.y.keys())] for best in bests[:1]]
-                print(f"6: top: {top_row_values}", file=output_file)
+            mid_centroid = self.calculate_centroid(selected.rows)
+            row5.append(mid_centroid)
 
-                dark.pop(todo)
+            top_row_values = [[best.cells[i] for i in list(self.cols.y.keys())] for best in bests[:1]]
+            row6.append(top_row_values)
 
-                stats.append(selected.mid())
-                bests.append(best.rows[0])
-                lite.append(dark.pop(todo))
+            dark.pop(todo)
+
+            stats.append(selected.mid())
+            bests.append(best.rows[0])
+            lite.append(dark.pop(todo))
+
+        print("Iteration", iter)
+        print("1.top6", row1)
+        print("2.top50", row2)
+        print("3.most", row3)
+        print("4.rand", row4)
+        print("5.mid", row5)
+        print("6.top", row6)
+
         return stats, bests
             
             
