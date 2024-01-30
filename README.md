@@ -31,7 +31,13 @@ On experimenting with different values of k and m, we observed that the accuraci
 
 The reports have been addded in [w3](https://github.com/ASE-24-Group-15/Homeworks/tree/main/w3)
 ## for w4
-...to be continued
+```
+cd src
+```
+- To run Homework 4 task of running Sequential model optimization
+```
+python gate.py -t SMO
+```
 
 :sparkles: Contributors
 ---
