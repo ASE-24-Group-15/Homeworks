@@ -32,7 +32,7 @@ from src.diabetes import eg_bayes
 from src.soybean import eg_km
 from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_frequency_settings
 import src.config as config
-
+from l import l
 def coerce(x):
    try : return ast.literal_eval(x)
    except Exception: return x.strip()
@@ -81,3 +81,13 @@ def main():
 
 if __name__ == "__main__":
   main()
+  
+def gate20():
+  print("#best, mid")
+  for i in range(20):
+    d = DATA("data/auto93.csv")
+    stats, bests = d.gate(4, 16, .5)
+    stat, best = stats[-1], bests[-1]
+    print(l().rnd(best.d2h(d)), l().rnd(stat.d2h(d)))
+  
+gate20()
