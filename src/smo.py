@@ -27,15 +27,15 @@ def gate20():
     print5 += row5
     print6 += row6
 
-  print("Print 1: top6", print1)
+  print("Print 1: top6\n", print1)
   print("====================================")
-  print("Print 2: top50", print2)
+  print("Print 2: top50\n", print2)
   print("====================================")
-  print("Print 3: most", print3)
+  print("Print 3: most\n", print3)
   print("====================================")
-  print("Print 4: rand", print4)
+  print("Print 4: rand\n", print4)
   print("====================================")
-  print("Print 5: mid", print5)
+  print("Print 5: mid\n", print5)
   print("====================================")
-  print("Print 6: top", print6)
+  print("Print 6: top\n", print6)
   print("====================================")
