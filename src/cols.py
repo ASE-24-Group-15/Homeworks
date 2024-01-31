@@ -7,8 +7,8 @@ class COLS:
         klass, col = None, None
         x,y,all = {}, {}, {}
 
-        if not isinstance(row.cells, list):
-            row.cells = list(row.cells)
+        # if not isinstance(row.cells, list):
+        #     row.cells = list(row.cells)
         for at, txt in enumerate(row.cells):
             col = (NUM if txt[0].isupper() else SYM)(txt, at)
             all[len(all)] = col 

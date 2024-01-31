@@ -39,7 +39,7 @@ class DATA:
         print(u)
         return u
     
-    def gate(self, budget0, budget, some, iter):
+    def gate(self, budget0, budget, some):
         stats, bests = [], []
         rows = l.shuffle(self.rows)
         row1 = []
@@ -65,30 +65,30 @@ class DATA:
             best, rest = self.bestRest(lite, len(lite) ** some)
             todo, selected = self.split(best, rest, lite, dark) 
 
-            rand_centroid = self.calculate_centroid(random.sample(dark, k=budget0+i)) 
-            row4.append(rand_centroid)
+            sample = [self.cols.names[0][-len(self.cols.y.keys()):]] 
+            random_sample = random.sample(dark, k=budget0+i)
+            for d in random_sample:
+                sample.append(d.cells[-len(self.cols.y.keys()):])
+            rand_centroid = DATA(sample).mid() 
+            row4.append(rand_centroid.cells)
 
-            mid_centroid = self.calculate_centroid(selected.rows)
-            row5.append(mid_centroid)
+            sample = [self.cols.names[0][-len(self.cols.y.keys()):]] 
+            for d in selected.rows:
+                sample.append(d.cells[-len(self.cols.y.keys()):])
+            mid_centroid = DATA(sample).mid() 
+            row5.append(mid_centroid.cells)
 
-            top_row_values = [[best.cells[i] for i in list(self.cols.y.keys())] for best in bests[:1]]
-            row6.append(top_row_values)
+            # top_row_values = [[best.cells[i] for i in list(self.cols.y.keys())] for best in bests[:1]]
 
             dark.pop(todo)
 
             stats.append(selected.mid())
             bests.append(best.rows[0])
             lite.append(dark.pop(todo))
+        
+            row6.append(bests[0].cells[-len(self.cols.y.keys()):])
 
-        print("Iteration", iter)
-        print("1.top6", row1)
-        print("2.top50", row2)
-        print("3.most", row3)
-        print("4.rand", row4)
-        print("5.mid", row5)
-        print("6.top", row6)
-
-        return stats, bests
+        return stats, bests, row1, row2, row3, row4, row5, row6
             
             
     def bestRest(self, rows, want):
