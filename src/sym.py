@@ -34,3 +34,8 @@ class SYM:
     
     def like(self, x, prior):
         return (self.has.get(x, 0) + config.the.m*prior) / (self.n + config.the.m) if (self.n + config.the.m) != 0 else 0
+    
+    def dist(self, x, y):
+        if x == "?" and y == "?":
+            return 1
+        return 0 if x == y else 1

@@ -1,4 +1,5 @@
 import math
+# import sys
 import src.config as config
 
 class ROW:
@@ -37,6 +38,21 @@ class ROW:
     def d2h(self, data):
         d, n = 0, 0
         for col in data.cols.y.values():
+            # x = self.cells.get(col.at)
+            # if x is None:
+            #     sys.stderr.write("?")
+            # else:
             n = n + 1
             d = d + abs(col.heaven - col.norm(self.cells[col.at])) ** 2
         return d ** .5 / n ** .5
+
+    def dist(self, row, data):
+        d, n, p = 0, 0, config.the.p
+        for col in data.cols.x.values():
+            n += 1
+            d += col.dist(self.cells[col.at], row.cells[col.at]) ** p
+        return (d ** (1 / p) / n ** (1 / p)) 
+
+    def neighbors(self, data, rows=None):
+        rows = rows or data.rows
+        return sorted(rows, key=lambda row: self.dist(row, data))

@@ -2,6 +2,7 @@ from src.tricks import csv
 from src.row import ROW
 from src.cols import COLS
 from src.l import l
+import src.config as config 
 import random
 
 class DATA:
@@ -30,7 +31,6 @@ class DATA:
             u.append(col.mid())
         return ROW(u)
 
-    
     def stats(self, cols = None, fun = None, ndivs = None):
         u = {".N" : len(self.rows)}
         targetCols = getattr(self.cols, fun or "y")
@@ -48,7 +48,6 @@ class DATA:
         row4 = []
         row5 = []
         row6 = []
-
         
         row1 += [[row.cells[i] for i in list(self.cols.y.keys())] for row in rows[:6]]
 
@@ -90,7 +89,6 @@ class DATA:
 
         return stats, bests, row1, row2, row3, row4, row5, row6
             
-            
     def bestRest(self, rows, want):
         rows = sorted(rows, key=lambda x: x.d2h(self))
         best, rest = self.cols.names[:], self.cols.names[:]
@@ -115,11 +113,19 @@ class DATA:
                 out, max = i, tmp
         return out, selected
     
+    def farapart(self, data, sortp=False, a=None):
+        rows = data.rows or self.rows
+        far = int(len(rows) * config.the.Far)
+        evals = 1 if a else 2
+        if not a:
+            a = random.choice(rows).neighbors(self, rows)[far]
+        b = a.neighbors(self, rows)[far]
+
+        if sortp and b.d2h(self) < a.d2h(self):
+            a, b = b, a
+
+        return a, b, a.dist(b, self)#, evals
     
-    def calculate_centroid(self, data):
-        last_n_elements = [d.cells[-len(self.cols.y.keys()):] for d in data]
-        centroid = [sum(x) / len(x) for x in zip(*last_n_elements)]
-        return centroid
 
 
 
