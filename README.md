@@ -39,6 +39,15 @@ cd src
 python gate.py -t SMO
 ```
 
+## for w5
+```
+cd src
+```
+- To run Homework 5 task,
+```
+python gate.py -t far
+```
+
 :sparkles: Contributors
 ---
 <table>
