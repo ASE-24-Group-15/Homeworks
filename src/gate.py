@@ -35,7 +35,7 @@ from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_fre
 import src.config as config
 from src.l import l
 from src.dist import dist
-from src.farapart import far
+from src.far import far
 
 def coerce(x):
    try : return ast.literal_eval(x)

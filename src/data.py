@@ -115,7 +115,7 @@ class DATA:
     
     def farapart(self, data, sortp=False, a=None):
         rows = data.rows or self.rows
-        far = int(len(rows) * config.the.Far)
+        far = int(len(rows) *  config.the.get("Far", 0.95))
         evals = 1 if a else 2
         if not a:
             a = random.choice(rows).neighbors(self, rows)[far]
@@ -124,7 +124,8 @@ class DATA:
         if sortp and b.d2h(self) < a.d2h(self):
             a, b = b, a
 
-        return a, b, a.dist(b, self)#, evals
+        return a, b, a.dist(b, self)
+
     
 
 
