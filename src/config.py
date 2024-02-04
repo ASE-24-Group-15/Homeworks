@@ -6,6 +6,7 @@ Command line options:
   -k --k        low class frequency kludge      = 1
   -m --m        low attribute frequency kludge  = 2
   -s --seed     random number seed              = 31210
-  -t --todo     start up action                 = help"""
+  -t --todo     start up action                 = help
+  -F --Far    how far to search for faraway?  = .95"""
 global the
 the = {}
