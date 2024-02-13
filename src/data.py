@@ -3,6 +3,7 @@ from src.row import ROW
 from src.cols import COLS
 from src.l import l
 import src.config as config 
+from src.node import NODE
 import random
 
 class DATA:
@@ -113,8 +114,8 @@ class DATA:
                 out, max = i, tmp
         return out, selected
     
-    def farapart(self, data, sortp=False, a=None):
-        rows = data.rows or self.rows
+    def farapart(self, rows, sortp=False, a=None):
+        rows = rows or self.rows 
         far = int(len(rows) *  config.the.get("Far", 0.95))
         evals = 1 if a else 2
         if not a:
@@ -124,7 +125,71 @@ class DATA:
         if sortp and b.d2h(self) < a.d2h(self):
             a, b = b, a
 
-        return a, b, a.dist(b, self)
+        return a, b, a.dist(b, self), evals
+    
+    # Optimization via tecursive random projects. 
+    # `Half` then data, then recurse on the best half. 
+    def branch(self, stop=None):
+        evals, rest = 1, []
+        stop = stop or (2 * (len(self.rows) ** 0.5))
+
+        def _branch(data, above=None, left=None, lefts=None, rights=None):
+            nonlocal evals, rest
+            if len(data.rows) > stop:
+                lefts, rights, left, _, _, _, _ = self.half(data.rows, True, above)
+                evals += 1
+                rest.extend(rights)
+                return _branch(self.clone(lefts), left)
+            else:
+                return self.clone(data.rows), self.clone(rest), evals
+
+        return _branch(self)
+    
+    # Divide `rows` into two halves, based on distance to two far points.
+    def half(self, rows, sortp=False, before=None, evals=None):
+        evals = evals or 0
+        some = l.many(rows, min(config.the.Half, len(rows)))
+        a, b, C, evals = self.farapart(some, sortp, before)
+        
+        def d(row1, row2):
+            return row1.dist(row2, self)
+
+        def project(r):
+            return ((d(r, a) ** 2) + (C ** 2) - (d(r, b) ** 2)) / (2 * C)
+
+        a_s, b_s = [], []
+        sorted_rows = sorted(rows, key=project)
+        for n, row in enumerate(sorted_rows):
+            if n + 1 <= len(rows) // 2:
+                a_s.append(row)
+            else:
+                b_s.append(row)
+
+        return a_s, b_s, a, b, C, d(a, b_s[0]), evals
+
+    def clone(self, rows=None):
+        new = DATA(self.cols.names)
+        if rows is not None:
+            for row in rows:
+                new.add(row)
+        return new
+    
+    def tree(self, sortp=False):
+        evals = 0
+
+        def _tree(data, above=None, lefts=None, rights=None, node=None):
+            nonlocal evals
+            node = NODE(data)
+            if len(data.rows) > 2 * len(self.rows) ** 0.5:
+                lefts, rights, node.left, node.right, node.C, node.cut, evals1 = self.half(data.rows, sortp, above)
+                evals += evals1
+                node.lefts = _tree(self.clone(lefts), node.left)
+                node.rights = _tree(self.clone(rights), node.right)
+            return node
+
+        return _tree(self), evals
+
+
 
     
 

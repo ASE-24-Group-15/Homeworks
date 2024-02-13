@@ -35,7 +35,12 @@ from src.diabetes_explore_low_frequency_settings import diabetes_explore_low_fre
 import src.config as config
 from src.l import l
 from src.dist import dist
-from src.far import far
+from src.farapart import far
+from src.branch import branch
+from src.half import half
+from src.tree import tree
+from src.doubletap import doubletap
+
 
 def coerce(x):
    try : return ast.literal_eval(x)
@@ -55,7 +60,7 @@ def argument_parser():
     parser.add_argument('-F', '--Far', type=float, default=.95, help='distance to  distant rows')
     parser.add_argument('-g', '--go', type=str, default="help", help='start up action')
     # parser.add_argument('-h', '--help', type=bool, default=False, help='show help')
-    parser.add_argument('-H', '--Halves', type=int, default=512, help='#examples used in halving')
+    parser.add_argument('-H', '--Half', type=int, default=256, help='#examples used in halving')
     parser.add_argument('-p', '--p', type=int, default=2, help='distance coefficient')
     parser.add_argument('-S', '--seed', type=int, default=1234567891, help='random number seed')
     parser.add_argument('-r', '--rest', type=int, default=3, help='|rest| is |best|*rest')
@@ -88,6 +93,14 @@ def main():
     dist()
   if config.the.todo == "far":
     far()
+  if config.the.todo == "branch":
+    branch()
+  if config.the.todo == "half":
+    half()
+  if config.the.todo == "tree":
+    tree()
+  if config.the.todo == "doubletap":
+    doubletap()
 
 if __name__ == "__main__":
   main()
