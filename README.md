@@ -43,7 +43,11 @@ python gate.py -t SMO
 ```
 cd src
 ```
-- To run Homework 5 task,
+- To run Homework 5 "Get Distance" task,
+```
+python gate.py -t dist
+```
+- To run Homework 5 "Get Far" task,
 ```
 python gate.py -t far
 ```
