@@ -18,7 +18,7 @@ class TestGateScript(unittest.TestCase):
         self.assertEqual(args.cohen, 0.35)
         self.assertEqual(args.Cliffs, 0.2385)
         self.assertEqual(args.file, "../data/auto93.csv")
-        self.assertEqual(args.Far, 0.925)
+        self.assertEqual(args.Far, 0.95)
         self.assertEqual(args.go, "help")
         self.assertEqual(args.Halves, 512)
         self.assertEqual(args.p, 2)
