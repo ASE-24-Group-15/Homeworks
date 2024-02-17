@@ -4,7 +4,7 @@ from src.l import l
 def branch():
     d = DATA("../data/auto93.csv")
     best, rest, evals = d.branch()
-    print("best", l().o(best.mid().cells))
-    print("rest", l().o(rest.mid().cells))
-    print("evals",evals)
+    print("Best Cluster - Centroid: ", l().o(best.mid().cells))
+    print("Rest Cluster - Centroid: ", l().o(rest.mid().cells))
+    print("evals: ",evals)
     
