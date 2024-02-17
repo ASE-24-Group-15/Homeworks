@@ -36,8 +36,12 @@ class l:
                     u.append(f"{self.o(k, n)}: {self.o(v, n)}")
         return "{" + ", ".join(u) + "}"
         
-    # Return any `n` items (there may be repeats).
-    def many(t, n):
+    # Return any item from `t`
+    def any(self, t):
+        return random.choice(t)
+
+    # Return any `n` items (there may be repeats)
+    def many(self, t, n):
         n = n or len(t)
         u = []
         for _ in range(n):
@@ -50,4 +54,5 @@ class l:
         u.sort(key=lambda a: a['y'])  # sort
         v = [xy['x'] for xy in u]  # undecorate
         return v
+
 

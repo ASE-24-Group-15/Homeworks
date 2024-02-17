@@ -24,7 +24,7 @@ class NODE:
 
         maxDepth = 0
 
-        def _show(node, depth, leafp, post=None):
+        def _show(node, depth, leafp):
             nonlocal maxDepth
             post = leafp and (str(d2h(node.data)) + "\t" + str(l().o(node.data.mid().cells))) or ""
             maxDepth = max(maxDepth, depth)

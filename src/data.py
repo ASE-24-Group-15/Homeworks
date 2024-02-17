@@ -119,7 +119,7 @@ class DATA:
         far = int(len(rows) *  config.the.get("Far", 0.95))
         evals = 1 if a else 2
         if not a:
-            a = random.choice(rows).neighbors(self, rows)[far]
+            a = l().any(rows).neighbors(self, rows)[far]
         b = a.neighbors(self, rows)[far]
 
         if sortp and b.d2h(self) < a.d2h(self):
@@ -148,7 +148,7 @@ class DATA:
     # Divide `rows` into two halves, based on distance to two far points.
     def half(self, rows, sortp=False, before=None, evals=None):
         evals = evals or 0
-        some = l.many(rows, min(config.the.Half, len(rows)))
+        some = l().many(rows, min(config.the.Half, len(rows)))
         a, b, C, evals = self.farapart(some, sortp, before)
         
         def d(row1, row2):
@@ -157,13 +157,11 @@ class DATA:
         def project(r):
             return ((d(r, a) ** 2) + (C ** 2) - (d(r, b) ** 2)) / (2 * C)
 
-        a_s, b_s = [], []
         sorted_rows = sorted(rows, key=project)
-        for n, row in enumerate(sorted_rows):
-            if n + 1 <= len(rows) // 2:
-                a_s.append(row)
-            else:
-                b_s.append(row)
+        
+        mid_index = len(sorted_rows) // 2
+        a_s = sorted_rows[:mid_index]
+        b_s = sorted_rows[mid_index:]
 
         return a_s, b_s, a, b, C, d(a, b_s[0]), evals
 
