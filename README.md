@@ -52,6 +52,27 @@ python gate.py -t dist
 python gate.py -t far
 ```
 
+## for w6
+```
+cd src
+```
+- To run Homework 6 "doubletap" task,
+```
+python gate.py -t doubletap
+```
+- To run Homework 6 "tree" task,
+```
+python gate.py -t tree
+```
+- To run Homework 6 "Half" task,
+```
+python gate.py -t half
+```
+- To run Homework 6 "Branch" task,
+```
+python gate.py -t far
+```
+
 :sparkles: Contributors
 ---
 <table>
