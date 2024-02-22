@@ -49,7 +49,7 @@ class l:
         return u
 
     # Schwartzian transform:  decorate, sort, undecorate
-    def keysort(t, fun):
+    def keysort(self, t, fun):
         u = [{'x': x, 'y': fun(x)} for x in t]  # decorate
         u.sort(key=lambda a: a['y'])  # sort
         v = [xy['x'] for xy in u]  # undecorate
