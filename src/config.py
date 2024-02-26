@@ -13,6 +13,7 @@ OPTIONS:
   -m --min    minimum size               = .5
   -r --rest   |rest| is |best|*rest        = 3
   -T --Top    max. good cuts to explore   = 10 
+  -B --Beam   max number of ranges            = 10
 """
 global the
 the = {}
