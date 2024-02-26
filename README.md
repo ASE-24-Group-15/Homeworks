@@ -73,6 +73,11 @@ python gate.py -t half
 python gate.py -t far
 ```
 
+## for w6
+```
+cd src
+```
+
 :sparkles: Contributors
 ---
 <table>
