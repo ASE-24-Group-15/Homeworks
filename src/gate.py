@@ -49,7 +49,7 @@ def argument_parser():
     parser.add_argument('-k', '--k', type=int, default=1, help='low class frequency kludge')
     parser.add_argument('-m', '--m', type=int, default=2, help='low attribute frequency kludge')
     parser.add_argument('-BB', '--Beam', type=int, default=10, help='max number of ranges')
-    parser.add_argument('-S', '--Support', type=int, default=2, help='coeffecient on best')
+    parser.add_argument('-SS', '--Support', type=int, default=2, help='coeffecient on best')
 
     return parser
 

@@ -14,7 +14,7 @@ OPTIONS:
   -r --rest   |rest| is |best|*rest         = 3
   -T --Top    max. good cuts to explore   = 10 
   -BB --Beam   max number of ranges        = 10
-  -S --Support coeffecient on best        = 2
+  -SS --Support coeffecient on best        = 2
 """
 global the
 the = {}
