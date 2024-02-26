@@ -1,5 +1,6 @@
 import math
 import random
+import src.config as config 
 
 class l:
     def __init__(self):
