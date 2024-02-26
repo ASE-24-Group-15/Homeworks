@@ -73,7 +73,7 @@ python gate.py -t half
 python gate.py -t far
 ```
 
-## for w6
+## for w7
 ```
 cd src
 ```
