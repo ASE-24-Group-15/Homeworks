@@ -55,4 +55,28 @@ class l:
         v = [xy['x'] for xy in u]  # undecorate
         return v
 
+    #Return `t` in an array with indexes 1,2.3...
+    def asList(t):
+        return list(t.values())
+    
+    #Effort required to recreate the signal in `t`.
+    def entropy(t):
+        n = sum(t.values())
+        e = sum(-v / n * math.log(v / n + 1e-30, 2) for v in t.values())
+        return e, n
 
+    #Scoring 
+    def score(t, goal, LIKE, HATE):
+        like, hate, tiny = 0, 0, 1e-30
+        for klass, n in t.items():
+            if klass == goal:
+                like += n
+            else:
+                hate += n
+        like, hate = like / (LIKE + tiny), hate / (HATE + tiny)
+        if hate > like:
+            return 0
+        else:
+            support_coefficient = config.the.get("Support")
+            return like ** support_coefficient / (like + hate)
+            

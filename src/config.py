@@ -11,9 +11,10 @@ OPTIONS:
   -p --p      distance coefficient        = 2
   -S --seed   random number seed          = 1234567891
   -m --min    minimum size               = .5
-  -r --rest   |rest| is |best|*rest        = 3
+  -r --rest   |rest| is |best|*rest         = 3
   -T --Top    max. good cuts to explore   = 10 
-  -B --Beam   max number of ranges            = 10
+  -BB --Beam   max number of ranges        = 10
+  -S --Support coeffecient on best        = 2
 """
 global the
 the = {}

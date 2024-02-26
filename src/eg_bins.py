@@ -1,5 +1,6 @@
 from src.data import DATA
 from src.l import l
+import src.config as config 
 
 def eq_bons():
     l_instance = l()
@@ -21,7 +22,7 @@ def eq_bons():
     t = l_instance.keysort(t, lambda a: score(a))
     max_score = score(t[0])
     print("\n#scores:\n")
-    for v in l_instance.slice(t, 1, the["Beam"]):
+    for v in l_instance.slice(t, 1, config.the.get("Beam")):
         if score(v) > max_score * 0.1:
             print(l_instance.rnd(score(v)), l_instance.o(v))
     
