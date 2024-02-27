@@ -186,8 +186,6 @@ class DATA:
             return node
 
         return _tree(self), evals
-    
-    
 
 
 
