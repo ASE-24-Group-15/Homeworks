@@ -85,11 +85,9 @@ def main():
     tree()
   if config.the.todo == "doubletap":
     doubletap()
-  if config.the.todo == "hello":
+  if config.the.todo == "generatestats":
     generateStats()
 
 if __name__ == "__main__":
   main()
   
-
-generateStats();
