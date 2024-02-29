@@ -31,6 +31,12 @@ class DATA:
         for col in cols or self.cols.all.values():
             u.append(col.mid())
         return ROW(u)
+    
+    def div(self, cols=None):
+        u = []
+        for col in cols or self.cols.all.values():
+            u.append(col.div())
+        return ROW(u)
 
     def stats(self, cols = None, fun = None, ndivs = None):
         u = {".N" : len(self.rows)}
@@ -88,7 +94,8 @@ class DATA:
         
             row6.append(bests[0].cells[-len(self.cols.y.keys()):])
 
-        return stats, bests, row1, row2, row3, row4, row5, row6
+        # return stats, bests, row1, row2, row3, row4, row5, row6
+        return stats, bests
             
     def bestRest(self, rows, want):
         rows = sorted(rows, key=lambda x: x.d2h(self))
