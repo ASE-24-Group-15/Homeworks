@@ -21,7 +21,7 @@ from src.branch import branch
 from src.half import half
 from src.tree import tree
 from src.doubletap import doubletap
-from src.hw6 import generateStats
+from src.hw6 import experimentTreatments, generateStats
 
 
 def coerce(x):
@@ -87,6 +87,8 @@ def main():
     doubletap()
   if config.the.todo == "generatestats":
     generateStats()
+  if config.the.todo == "experimenttreatments":
+    experimentTreatments()
 
 if __name__ == "__main__":
   main()

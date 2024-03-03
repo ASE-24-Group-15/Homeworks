@@ -40,3 +40,12 @@ def generateStats():
     bestRow = sorted(data.rows, key=lambda x: x.d2h(data))[0]
     print("100% \t\t\t\t", '[' + ', '.join(["'" + str(item) + "'" for item in bestRow.cells]) + ']' + "\t\t\t\t" + str(l.rnd(2, bestRow.d2h(data))))
     
+
+def experimentTreatments():
+    print("date : ", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    print("file : ", config.the.file)
+    print("repeats : 20")
+    print("seed : ", config.the.seed)
+    data = DATA(config.the.file)
+    print("rows : ", len(data.rows))
+    print("cols : ", len(data.cols.names[0]))
