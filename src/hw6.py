@@ -85,7 +85,7 @@ def experimentTreatments():
         SAMPLE(rand(9), "rand9"),
         SAMPLE(bonr(15), "bonr15"),
         SAMPLE(rand(15), "rand15"), 
-        SAMPLE(bonr(20), "bonr15"),
+        SAMPLE(bonr(20), "bonr20"),
         SAMPLE(rand(20), "rand20"), 
         SAMPLE(rand(358), "rand358"), 
         SAMPLE(baseLines, "base")
