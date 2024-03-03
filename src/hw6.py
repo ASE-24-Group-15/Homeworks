@@ -11,7 +11,7 @@ def generateStats():
     print("repeats : 20")
     print("seed : ", config.the.seed)
     
-    data = DATA("Homeworks/data/auto93.csv")
+    data = DATA(config.the.file)
     print("rows : ", len(data.rows))
     print("cols : ", len(data.cols.names[0]))
     print("names \t\t\t\t", '[' + ', '.join(["'" + item + "'" for item in data.cols.names[0]]) + ']' + "\t\td2h-")
