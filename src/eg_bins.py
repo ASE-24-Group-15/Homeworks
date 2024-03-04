@@ -2,7 +2,7 @@ from src.data import DATA
 from src.l import l
 import src.config as config 
 
-def eq_bons():
+def eq_bins():
     l_instance = l()
     d = DATA("../data/auto93.csv")
     best, rest, _ = d.branch()
