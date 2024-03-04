@@ -15,6 +15,7 @@ OPTIONS:
   -T --Top    max. good cuts to explore   = 10 
   -BB --Beam   max number of ranges        = 10
   -SS --Support coeffecient on best        = 2
+  -C --Cut    ignore ranges less than C*max   = .1
 """
 global the
 the = {}
