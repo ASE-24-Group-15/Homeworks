@@ -77,6 +77,25 @@ python gate.py -t far
 ```
 cd src
 ```
+- To run Homework 7 "Part1 (no stats)" task,
+```
+python gate.py -t generatestats
+```
+- To run Homework 7 "Part Two (stats)" task,
+```
+python gate.py -t experimenttreatments
+```
+
+## for w8
+```
+cd src
+```
+- To run Homework 8 "Discretization" task,
+```
+python gate.py -t bin
+```
+
+
 
 :sparkles: Contributors
 ---
