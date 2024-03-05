@@ -48,7 +48,7 @@ class DATA:
     
     def gate(self, budget0, budget, some):
         stats, bests = [], []
-        rows = l.shuffle(self.rows)
+        rows = l().shuffle(self.rows)
         row1 = []
         row2 = []
         row3 = []
@@ -63,7 +63,7 @@ class DATA:
         rows.sort(key=lambda x: x.d2h(self))
         row3 += [[row.cells[i] for i in list(self.cols.y.keys())] for row in [rows[0]]]
 
-        rows = l.shuffle(rows)
+        rows = l().shuffle(rows)
         lite = rows[:budget0]
         dark = rows[budget0:]
 

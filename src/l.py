@@ -16,7 +16,7 @@ class l:
         mult = 10 ** (ndecs or 2)
         return math.floor(n * mult + 0.5) / mult
     
-    def shuffle(t):
+    def shuffle(self,t):
         u = list(t)
         for i in range(len(u) - 1, 1, -1):
             j = random.randint(0, i)
@@ -61,23 +61,26 @@ class l:
         return list(t.values())
     
     #Effort required to recreate the signal in `t`.
-    def entropy(t):
+    def entropy(self,t):
         n = sum(t.values())
-        e = sum(-v / n * math.log(v / n + 1e-30, 2) for v in t.values())
+        # e = sum(-v / n * math.log(v / n + 1e-30, 2) for v in t.values())
+        e = 0
+        for v in t.values():
+            e -= (v / n) * math.log2(v / n)
         return e, n
 
     #Scoring 
-    def score(t, goal, LIKE, HATE):
+    def score(self,t, goal, LIKE, HATE):
+
         like, hate, tiny = 0, 0, 1e-30
+
         for klass, n in t.items():
             if klass == goal:
                 like += n
             else:
                 hate += n
+
         like, hate = like / (LIKE + tiny), hate / (HATE + tiny)
-        if hate > like:
-            return 0
-        else:
-            support_coefficient = config.the.get("Support")
-            return like ** support_coefficient / (like + hate)
+
+        return 0 if hate > like else (like ** config.the.get("Support")) / (like + hate)
             

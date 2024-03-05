@@ -1,4 +1,5 @@
 import math
+import src.config as config
 
 class NUM:
     #Create
@@ -54,4 +55,7 @@ class NUM:
 
         return math.fabs(x - y)
 
-            
+    def bin(self, x):
+        tmp = (self.hi - self.lo) / (config.the.bins - 1)
+        return 1 if self.hi == self.lo else math.floor(x / tmp + 0.5) * tmp
+

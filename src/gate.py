@@ -22,7 +22,7 @@ from src.half import half
 from src.tree import tree
 from src.doubletap import doubletap
 from src.hw6 import experimentTreatments, generateStats
-
+from src.bins import bins
 
 def coerce(x):
    try : return ast.literal_eval(x)
@@ -89,6 +89,8 @@ def main():
     generateStats()
   if config.the.todo == "experimenttreatments":
     experimentTreatments()
+  if config.the.todo == "bin":
+    bins()
 
 if __name__ == "__main__":
   main()
