@@ -1,7 +1,7 @@
 from src.data import DATA
 from src.l import l
 import src.config as config 
-from src.range import ranges1
+from src.ranges import ranges1
 
 def bins():
     l_instance = l()

@@ -4,6 +4,9 @@ OPTIONS:
   -B --Bootstraps number of bootstraps    = 512
   -c --cohen  parametric small delta      = .35
   -C --Cliffs  non-parametric small delta = 0.2385 
+  -CC --Cut    ignore ranges less than C*max   = .1
+  -d --d      frist cut                       = 32
+  -D --D      second cut                      = 4
   -f --file   where to read data          = "../data/auto93.csv"
   -F --Far    distance to  distant rows   = .925
   -g --go     start up action             = "help"
