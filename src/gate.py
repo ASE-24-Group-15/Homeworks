@@ -23,6 +23,7 @@ from src.tree import tree
 from src.doubletap import doubletap
 from src.hw6 import experimentTreatments, generateStats
 from src.bins import bins
+from src.eg_rules import rules
 
 def coerce(x):
    try : return ast.literal_eval(x)
@@ -38,6 +39,9 @@ def argument_parser():
     parser.add_argument('-B', '--Bootstraps', type=int, default=512, help='number of bootstraps')
     parser.add_argument('-c', '--cohen', type=float, default=.35, help='parametric small delta')
     parser.add_argument('-C', '--Cliffs', type=float, default=.2385, help='non-parametric small delta')
+    parser.add_argument('-CC', '--Cut', type=float, default=.1, help='ignore ranges less than C*max')
+    parser.add_argument('-d', '--d', type=int, default=32, help='frist cut')
+    parser.add_argument('-D', '--D', type=int, default=4, help='second cut')
     parser.add_argument('-f', '--file', type=str, default="../data/auto93.csv", help='where to read data')
     parser.add_argument('-F', '--Far', type=float, default=.95, help='distance to  distant rows')
     parser.add_argument('-g', '--go', type=str, default="help", help='start up action')
@@ -91,7 +95,10 @@ def main():
     experimentTreatments()
   if config.the.todo == "bin":
     bins()
+  if config.the.todo == "rule":
+    rules()
 
 if __name__ == "__main__":
   main()
+  # rules()
   
