@@ -25,14 +25,14 @@ def generateStats():
     print("#")
     
     #running smo9 20 times
-    for i in range(20):
+    for _ in range(20):
         _, best = data.gate(4, 9, 0.5)
         print("smo9 \t\t\t\t", '[' + ', '.join(["'" + str(item) + "'" for item in best[-1].cells]) + ']' + "\t\t\t\t" + str(l.rnd(2, best[-1].d2h(data))))
     
     print("#")
     
     #running any50
-    for i in range(20):
+    for _ in range(20):
         rand50 = random.sample(data.rows, 50)
         rows = sorted(rand50, key=lambda x: x.d2h(data))
         print("any50 \t\t\t\t", '[' + ', '.join(["'" + str(item) + "'" for item in rows[0].cells]) + ']' + "\t\t\t\t" + str(l.rnd(2, rows[0].d2h(data))))
