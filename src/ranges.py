@@ -50,6 +50,13 @@ class RANGE:
     def __str__(self):
         return json.dumps({"at": self.at, "scored": self.scored, "txt": self.txt, "x": self.x, "y": self.y})
     
+def ranges(cols, rowss):
+    t = []
+    for _,col in cols.items():
+        for range in ranges1(col, rowss):
+            t.append(range)
+    return t
+
 def ranges1(col, rowss):
     out, nrows = {}, 0
     for y, rows in rowss.items():
