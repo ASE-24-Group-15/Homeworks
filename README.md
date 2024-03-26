@@ -96,6 +96,16 @@ python gate.py -t bin
 ```
 
 
+## for w9
+```
+cd src
+```
+- To run Homework 8 "Rules" task,
+```
+python gate.py -t rule
+```
+
+
 
 :sparkles: Contributors
 ---
