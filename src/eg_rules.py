@@ -6,8 +6,7 @@ from src import ranges
 
 def rules():
     for _ in range(1):
-        d = DATA(config.the.file)
-        
+        d = DATA(config.the.file) 
         best0, rest, evals1 = d.branch(config.the.d)
         best, _, evals2 = best0.branch(config.the.D)
         print(evals1 + evals2 + config.the.D - 1)
