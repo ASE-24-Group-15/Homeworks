@@ -84,3 +84,9 @@ class l:
 
         return 0 if hate > like else (like ** config.the.get("Support")) / (like + hate)
             
+    def powerset(self,s):
+        t = [[]]
+        for i in range(len(s)):
+            for j in range(len(t)):
+                t.append([s[i]] + t[j])
+        return t
