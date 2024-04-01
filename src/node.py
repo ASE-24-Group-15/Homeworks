@@ -34,3 +34,21 @@ class NODE:
         print("")
         print(("    " * maxDepth) + str(d2h(self.data)), l().o(self.data.mid().cells))
         print(("    " * maxDepth) + "_", l().o(self.data.cols.names))
+        
+        
+    def getClusters(self):
+        clusterArray = []
+        def d2h(data):
+            return l().rnd(data.mid().d2h(self.data))
+
+        maxDepth = 0
+
+        def _show(node, depth, leafp):
+            nonlocal clusterArray
+            nonlocal maxDepth
+            if(leafp):
+                clusterArray.append(node)
+
+        self.walk(_show)
+        return clusterArray
+
