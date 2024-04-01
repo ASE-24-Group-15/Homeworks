@@ -67,7 +67,7 @@ class RULE:
                 ors[i] = range.show()
             ands.append(" or ".join(ors))
         return " and ".join(ands)
-
+    
 class RULES:
     def __init__(self, ranges, goal, rowss):
         self.sorted = []

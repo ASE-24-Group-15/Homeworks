@@ -82,7 +82,7 @@ class l:
 
         like, hate = like / (LIKE + tiny), hate / (HATE + tiny)
 
-        return 0 if hate > like else (like ** config.the.get("Support")) / (like + hate)
+        return 0 if hate > like else (like ** config.the.get("Support")) / (like + hate + tiny)
             
     def powerset(self,s):
         t = [[]]
